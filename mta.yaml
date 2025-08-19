@@ -26,6 +26,27 @@ modules:
     requires:
       - name: hello-world-auth
 
+  - name: hello-world
+    type: approuter.nodejs
+    path: app/router
+    parameters:
+      keep-existing-routes: true
+      disk-quota: 256M
+      memory: 256M
+    requires:
+      - name: hello-world-srv-api
+        group: destinations
+        properties:
+          name: srv-api # must be used in xs-app.json as well
+          url: ~{srv-url}
+          forwardAuthToken: true
+      - name: hello-world-auth
+    provides:
+      - name: app-api
+        properties:
+          app-protocol: ${protocol}
+          app-uri: ${default-uri}
+
 resources:
   - name: hello-world-auth
     type: org.cloudfoundry.managed-service
@@ -36,3 +57,8 @@ resources:
       config:
         xsappname: hello-world-${org}-${space}
         tenant-mode: dedicated
+        oauth2-configuration:
+          redirect-uris:
+            - https://*~{app-api/app-uri}/**
+    requires:
+      - name: app-api
