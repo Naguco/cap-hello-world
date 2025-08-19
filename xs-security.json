@@ -1,5 +1,30 @@
 {
-  "scopes": [],
+  "xsappname": "hello-world",
+  "scopes": [
+    {
+      "name": "$XSAPPNAME.admin",
+      "description": "Admin of the hello world app"
+    },
+    {
+      "name": "$XSAPPNAME.user",
+      "description": "End user of the hello world app"
+    }
+  ],
   "attributes": [],
-  "role-templates": []
+  "role-templates": [
+    {
+      "name": "Administrator",
+      "description": "A person that can create messages in the app",
+      "scope-references": [
+        "$XSAPPNAME.admin"
+      ]
+    },
+    {
+      "name": "User",
+      "description": "A person that can retrieve messages from the app",
+      "scope-references": [
+        "$XSAPPNAME.user"
+      ]
+    }
+  ]
 }

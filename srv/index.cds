@@ -3,3 +3,9 @@ service SalutatorService @(restrict: [
 ]) {
     function hello() returns String;
 }
+
+service AdminSalutatorService @(restrict: [
+    { grant: 'hello', to: 'admin' }
+]) {
+    function hello() returns String
+}
