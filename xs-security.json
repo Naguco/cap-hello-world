@@ -13,14 +13,14 @@
   "attributes": [],
   "role-templates": [
     {
-      "name": "Administrator",
+      "name": "admin",
       "description": "A person that can create messages in the app",
       "scope-references": [
         "$XSAPPNAME.admin"
       ]
     },
     {
-      "name": "User",
+      "name": "user",
       "description": "A person that can retrieve messages from the app",
       "scope-references": [
         "$XSAPPNAME.user"
