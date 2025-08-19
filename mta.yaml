@@ -37,7 +37,7 @@ modules:
       - name: hello-world-srv-api
         group: destinations
         properties:
-          name: srv-api # must be used in xs-app.json as well
+          name: hello-world-srv-api # must be used in xs-app.json as well
           url: ~{srv-url}
           forwardAuthToken: true
       - name: hello-world-auth
