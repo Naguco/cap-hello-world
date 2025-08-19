@@ -26,5 +26,12 @@
   "scripts": {
     "start": "cds-serve",
     "test": "mocha"
+  },
+  "cds": {
+    "requires": {
+      "[production]": {
+        "auth": "xsuaa"
+      }
+    }
   }
 }

@@ -23,3 +23,16 @@ modules:
       - name: hello-world-srv-api # required by consumers of CAP services (e.g. approuter)
         properties:
           srv-url: ${default-url}
+    requires:
+      - name: hello-world-auth
+
+resources:
+  - name: hello-world-auth
+    type: org.cloudfoundry.managed-service
+    parameters:
+      service: xsuaa
+      service-plan: application
+      path: ./xs-security.json
+      config:
+        xsappname: hello-world-${org}-${space}
+        tenant-mode: dedicated
