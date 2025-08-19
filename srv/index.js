@@ -1,4 +1,4 @@
-const { default: cds } = require("@sap/cds");
+const { cds } = require("@sap/cds");
 
 class SalutatorService extends cds.ApplicationService {
 
